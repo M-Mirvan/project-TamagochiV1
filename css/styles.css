@@ -1,0 +1,76 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+
+  background-image: url("../img/perfect.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#pet-container {
+  margin: 20px auto 30px;
+}
+
+#pet-img {
+  width: 200px;
+}
+
+.stat {
+  margin-bottom: 20px;
+}
+
+.bar-container {
+  width: 300px;
+  height: 25px;
+  border: 2px solid #000;
+  background: #ddd;
+  margin: 5px auto;
+}
+
+.bar {
+  height: 100%;
+  width: 100%;
+  transition: width 0.3s;
+}
+
+#hunger-bar { background: limegreen; }
+#sleep-bar { background: dodgerblue; }
+#energy-bar { background: gold; }
+
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* DARK SOULS DEATH SCREEN */
+#death-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.death-text {
+  font-size: 72px;
+  font-weight: bold;
+  color: darkred;
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px black;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
