@@ -1,85 +1,88 @@
 let hunger = 100;
 let sleep = 100;
-let energy = 100;
+let joy = 100;
+let gameOver = false;
 
-let isDead = false;
-let currentMood = "";
-let gameLoop;
+function start_game() {
+    document.getElementById("hunger").textContent = hunger;
+    document.getElementById("sleep").textContent = sleep;
+    document.getElementById("joy").textContent = joy;
 
-const hungerBar = document.getElementById("hunger-bar");
-const sleepBar = document.getElementById("sleep-bar");
-const energyBar = document.getElementById("energy-bar");
-
-const petImg = document.getElementById("pet-img");
-
-function updateBar(bar, value) {
-  bar.style.width = value + "%";
+    updateVisuals();
 }
 
-function updatePetMood() {
-  let newMood = "happy";
+// Updates character image & background based on stats
+function updateVisuals() {
+    const character = document.getElementById("character");
+    const game = document.getElementById("game");
 
-  if (hunger <= 0 || sleep <= 0 || energy <= 0) {
-    newMood = "dead";
-  } else if (sleep < 30 || hunger < 30) {
-    newMood = "sad";
-  }
+    // Reset 
+    game.classList.remove("hungry", "sleepy", "sad");
 
-  if (newMood === "dead") {
-    petImg.src = "/img/OIP.png";
-  } else if (newMood === "sad") {
-    petImg.src = "/img/sad.png";
-  } else {
-    petImg.src = "/img/happey.jpg";
-  }
+    
+    if (hunger < 45) {
+        character.src = "/img/honger.png";
+        game.classList.add("hungry");
+    } else if (sleep < 23) {
+        character.src = "/img/sleepy.png";
+        game.classList.add("sleepy");
+    } else if (joy < 60) {
+        character.src = "/img/sad.png";
+        game.classList.add("sad");
+    } else {
+        character.src = "/img/ei.png"; 
+    }
 }
 
-function die() {
-  isDead = true;
-  clearInterval(gameLoop);
-
-  petImg.src = "/img/OIP.png";
-  document.getElementById("death-overlay").style.display = "flex";
-
-  document.querySelectorAll("button").forEach(btn => {
-    btn.disabled = true;
-  });
+// Death 
+function tama_dood() {
+    if (hunger <= 0 || sleep <= 0 || joy <= 0) {
+        gameOver = true;
+        document.getElementById("character").src = "/img/OIP.jpg";
+        if (confirm("Je tama is dood. Resetten?")) {
+            reset();
+        }
+    }
 }
 
-// GAME LOOP
-gameLoop = setInterval(() => {
-  if (isDead) return;
+// events btn
+document.getElementById("hungerBtn").addEventListener("click", () => {
+    if (gameOver) return;
+    hunger = Math.min(hunger + 20, 100);
+    start_game();
+});
 
-  hunger = Math.max(0, hunger - 1);
-  sleep = Math.max(0, sleep - 0.5);
-  energy = Math.max(0, energy - 0.8);
+document.getElementById("sleepBtn").addEventListener("click", () => {
+    if (gameOver) return;
+    sleep = Math.min(sleep + 20, 100);
+    start_game();
+});
 
-  updateBar(hungerBar, hunger);
-  updateBar(sleepBar, sleep);
-  updateBar(energyBar, energy);
+document.getElementById("joyBtn").addEventListener("click", () => {
+    if (gameOver) return;
+    joy = Math.min(joy + 20, 100);
+    start_game();
+});
 
-  updatePetMood();
+// Automatic decrease every second
+function decrease_values() {
+    if (gameOver) return;
+    hunger--;
+    sleep--;
+    joy--;
+    tama_dood();
+    start_game();
+}
 
-  if (hunger === 0 || sleep === 0 || energy === 0) {
-    die();
-  }
-}, 1000);
+// Reset 
+function reset() {
+    hunger = 100;
+    sleep = 100;
+    joy = 100;
+    gameOver = false;
+    start_game();
+}
 
-// BUTTONS
-document.getElementById("eat-btn").onclick = () => {
-  if (!isDead) hunger = Math.min(100, hunger + 30);
-};
-
-document.getElementById("sleep-btn").onclick = () => {
-  if (!isDead) sleep = Math.min(100, sleep + 40);
-};
-
-document.getElementById("energy-btn").onclick = () => {
-  if (!isDead) energy = Math.min(100, energy + 25);
-};
-
-// INITIAL DRAW
-updateBar(hungerBar, hunger);
-updateBar(sleepBar, sleep);
-updateBar(energyBar, energy);
-updatePetMood();
+// loop
+start_game();
+setInterval(decrease_values, 1000);

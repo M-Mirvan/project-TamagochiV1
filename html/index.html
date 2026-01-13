@@ -1,49 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tamagotchi</title>
-  <link rel="stylesheet" href="/css/styles.css">
+    <meta charset="UTF-8">
+    <title>Tamagotchi</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-  <h1>My Tamagotchi</h1>
+<div class="container" id="game">
+    <div class="properties">
+        <div>Hunger: <span id="hunger">100</span></div>
+        <button id="hungerBtn">Eat</button>
 
-  <!-- PET IMAGE -->
-  <div id="pet-container">
-   <img id="pet-img" src="/img/happey.jpg" alt="pet">
-  </div>
-<!--  -->
-  <!-- STATS -->
-  <div class="stat">
-    <p>🍎 Hunger</p>
-    <div class="bar-container">
-      <div id="hunger-bar" class="bar"></div>
+        <div>Sleep: <span id="sleep">100</span></div>
+        <button id="sleepBtn">Sleep</button>
+
+        <div>Joy: <span id="joy">100</span></div>
+        <button id="joyBtn">Play</button>
     </div>
-    <button id="eat-btn">Eat</button>
-  </div>
 
-  <div class="stat">
-    <p>😴 Sleep</p>
-    <div class="bar-container">
-      <div id="sleep-bar" class="bar"></div>
+    <div class="character-container">
+        <img id="character" src="/img/ei.png" alt="tama">
     </div>
-    <button id="sleep-btn">Sleep</button>
-  </div>
-
-  <div class="stat">
-    <p>⚡ Energy</p>
-    <div class="bar-container">
-      <div id="energy-bar" class="bar"></div>
-    </div>
-    <button id="energy-btn">Rest</button>
-  </div>
-
-  <!-- DEATH SCREEN -->
-  <div id="death-overlay">
-    <div class="death-text">YOU DIED</div>
-  </div>
-
-  <script src="/javasc/script.js"></script>
+</div>
+<audio src="/audio/crystal-night-orchestral-background-music-for-video-stories-short-1-462926.mp3" autoplay loop></audio>
+<script src="/javasc/script.js"></script>
 </body>
 </html>
