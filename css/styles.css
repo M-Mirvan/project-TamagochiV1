@@ -17,21 +17,21 @@ body {
 }
 
 .container.hungry {
-    background-image: url("/img/bg_hungry.png");
+    background-image: url("../img/perfect.jpg");
 }
 
 .container.sleepy {
-    background-image: url("/img/OIP.jpg");
+    background-image: url("../project-TamagochiV1/img/sleep 2.0.jpg");
 }
 
 .container.sad {
-    background-image: url("/img/31201.jpg");
+    background-image: url("../img/OIP.jpg");
 }
 
 /* Stats r on top */
 .properties {
-    display: flex;          /*  horizontally */
-    gap: 20px;              /* Space between */
+    display: flex;         
+    gap: 20px;              
     font-size: 20px;
     margin-bottom: 30px;
     color: white;   
@@ -56,4 +56,31 @@ button {
 .character-container img {
     width: 200px;
     transition: 0.3s;
+}
+
+.character-container {
+    display: flex;
+    align-items: center;   
+    gap: 20px;             
+}
+
+.chat {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 18px;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.chat::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(255,255,255,0.85);
 }
