@@ -30,7 +30,7 @@ document.getElementById("joyBtn").addEventListener("click", () => {
     start_game();
 });
 
-// Updates character image & background
+// Updates character image && background
 function updateVisuals() {
     const character = document.getElementById("character");
     const game = document.getElementById("game");
@@ -91,7 +91,7 @@ setInterval(decrease_values, 1000);
 function updateChat() {
     const chat = document.getElementById("chat");
 
-    if (hunger < 20) {
+    if (hunger < 70, sleep <70) {
         chat.textContent = "I'm starving 😫 please feed me!";
     } else if (hunger < 90) {
         chat.textContent = "You should eat 🍎";
