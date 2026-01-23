@@ -3,28 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Tamagotchi</title>
-    <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
+
 </head>
 <body>
+    <div class="#start-screen"></div>
+    <h1>Welkom</h1>
+    <button id="start-btn">Start Game</button>
 
 <div class="container" id="game">
+    <button id="audio1">audio</button>
     <div class="properties">
-        <div>Hunger: <span id="hunger">100</span></div>
+    <div class="stat">
+        Hunger
+        <div class="bar">
+            <div class="fill hunger-bar" id="hungerBar"></div>
+        </div>
+        <span id="hunger">100</span>
         <button id="hungerBtn">Eat</button>
+    </div>
 
-        <div>Sleep: <span id="sleep">100</span></div>
+    <div class="stat">
+        Sleep
+        <div class="bar">
+            <div class="fill sleep-bar" id="sleepBar"></div>
+        </div>
+        <span id="sleep">100</span>
         <button id="sleepBtn">Sleep</button>
+    </div>
 
-        <div>Joy: <span id="joy">100</span></div>
+    <div class="stat">
+        Joy
+        <div class="bar">
+            <div class="fill joy-bar" id="joyBar"></div>
+        </div>
+        <span id="joy">100</span>
         <button id="joyBtn">Play</button>
     </div>
+</div>
 
     <div class="character-container">
         <div class="chat" id="chat"></div>
-        <img id="character" src="../img/ei.png" alt="tama">
+        <img id="character" src="/img/ei.png" alt="tama">
     </div>
 </div>
-<audio src="../audio/crystal-night-orchestral-background-music-for-video-stories-short-1-462926.mp3" autoplay loop ></audio>
 <script src="/javasc/script.js"></script>
 </body>
 </html>

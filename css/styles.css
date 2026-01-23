@@ -17,15 +17,15 @@ body {
 }
 
 .container.hungry {
-    background-image: url("../img/perfect.jpg");
+    background-image: url("/img/perfect.jpg");
 }
 
 .container.sleepy {
-    background-image: url("../project-TamagochiV1/img/sleep 2.0.jpg");
+    background-image: url("/img/sleep 2.0.jpg");
 }
 
 .container.sad {
-    background-image: url("../img/fun\ Background.jpg ");
+    background-image: url("/img/funBackground.jpg");
 }
 
 /* Stats r on top */
@@ -41,10 +41,15 @@ body {
     align-items: center;
     gap: 5px;
 }
-
+ button:hover {
+    background-color: #68d4bb; /* Smooth color change */
+    transform: scale(1.05); /* Slight zoom */
+    opacity: 0.9; /* Fade effect */
+ }
 button {
     padding: 6px 12px;
     cursor: pointer;
+    border-radius: 12px;
 }
 
 .character-container {
@@ -83,4 +88,60 @@ button {
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent transparent rgba(255,255,255,0.85);
+}
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 180px;
+}
+
+.bar {
+    width: 100%;
+    height: 14px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    width: 100%;
+    background: limegreen;
+    transition: width 0.4s linear;
+}
+.fill.low {
+    background: red;
+}
+/* Base bar */
+.bar {
+    width: 100%;
+    height: 14px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    width: 100%;
+    transition: width 0.4s linear, background-color 0.3s;
+}
+
+/* UNIQUE COLORS */
+.hunger-bar {
+    background: dodgerblue;
+}
+
+.sleep-bar {
+    background: mediumslateblue;
+}
+
+.joy-bar {
+    background: gold;
+}
+
+/* LOW WARNING */
+.fill.low {
+    background: red !important;
 }
